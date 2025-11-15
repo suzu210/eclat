@@ -1,0 +1,108 @@
+.confiserie-page {
+  background: #faf8f5;
+  color: #6b5b7b;
+  line-height: 1.6;
+}
+.confiserie-page .hero {
+  color: #faf8f5;
+  background: linear-gradient(135deg, #faf8f5 0%, #6b5b7b 100%);
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 8rem;
+}
+.confiserie-page .hero .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 0.5rem;
+  animation: tracking-in-expand 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  color: #faf8f5;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .hero .hero-title {
+    font-size: 2.2rem;
+  }
+}
+.confiserie-page .hero .hero-subtitle {
+  font-size: 1.2rem;
+  color: #faf8f5;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .hero .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+.confiserie-page .product-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .product-list {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+}
+.confiserie-page .product-list .product-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .product-list .product-card {
+    padding: 0.5rem;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+.confiserie-page .product-list .product-card:hover {
+  transform: translateY(-8px);
+}
+.confiserie-page .product-list .product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.confiserie-page .product-list .product-card h2 {
+  font-size: 1.3rem;
+  color: #6b5b7b;
+  margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .product-list .product-card h2 {
+    font-size: 1.1rem;
+  }
+}
+.confiserie-page .product-list .product-card .desc {
+  font-size: 1rem;
+  color: #6b5d7b;
+  margin-bottom: 0.8rem;
+}
+.confiserie-page .product-list .product-card .price {
+  font-size: 1rem;
+  color: #d4a574;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .confiserie-page .product-list .product-card .price {
+    font-size: 0.8rem;
+    bottom: 0.5rem;
+  }
+}
+.confiserie-page .other-menus {
+  text-align: center;
+}
+.confiserie-page .other-menus .menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
