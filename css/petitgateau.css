@@ -1,54 +1,99 @@
 .petitgateau-page {
-  background: #faf8f5;
-  color: #6b5b7b;
+  background: #fffdf9;
+  padding: 100px 0 120px;
+  min-height: 100vh;
+  color: #645a52;
   line-height: 1.6;
 }
-.petitgateau-page .hero {
-  color: #faf8f5;
-  background: linear-gradient(135deg, #faf8f5 0%, #6b5b7b 100%);
+.petitgateau-page .petitgateau-hero {
+  position: relative;
+  width: min(90%, 1200px);
+  gap: 1.5rem;
   text-align: center;
-  padding: 4rem 2rem;
+  margin: 0 auto 3rem;
+  padding: 6rem 1rem 4rem;
+  border-radius: 50px;
+  border: 1px solid rgba(200, 180, 150, 0.2);
+  background: #f8f5f1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 0 rgba(255, 255, 255, 0.7);
+  animation: fadeInUp 1s ease-out both;
 }
-.petitgateau-page .hero .hero-title {
-  font-size: 3rem;
+.petitgateau-page .petitgateau-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.15), transparent 70%);
+  pointer-events: none;
+}
+@media screen and (max-width: 767px) {
+  .petitgateau-page .petitgateau-hero {
+    max-width: 90%;
+    padding: 3rem 1rem;
+  }
+}
+.petitgateau-page .petitgateau-hero .hero-title {
+  position: relative;
+  text-align: center;
+  letter-spacing: 0.03rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  font-size: 3.2rem;
   font-weight: 700;
   font-family: "Playfair Display", serif;
-  margin-bottom: 0.5rem;
-  color: #faf8f5;
-  animation: tracking-in-expand 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  color: #645a52;
+}
+.petitgateau-page .petitgateau-hero .hero-title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, #c6b49b, #e8dcc7);
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 @media screen and (max-width: 767px) {
-  .petitgateau-page .hero .hero-title {
-    font-size: 2.2rem;
+  .petitgateau-page .petitgateau-hero .hero-title {
+    margin-bottom: 0.4rem;
+    font-size: 1.8rem;
   }
 }
-.petitgateau-page .hero .hero-subtitle {
-  font-size: 1.2rem;
-  color: #faf8f5;
+.petitgateau-page .petitgateau-hero .hero-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: 500;
+  color: #7a6f67;
+  opacity: 0.9;
 }
 @media screen and (max-width: 767px) {
-  .petitgateau-page .hero .hero-subtitle {
-    font-size: 1rem;
+  .petitgateau-page .petitgateau-hero .hero-subtitle {
+    line-height: 1.4;
+    margin-top: 0;
+    font-size: 0.9rem;
   }
 }
-
-.product-list {
+.petitgateau-page .product-list {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   padding: 2rem;
 }
 @media screen and (max-width: 767px) {
-  .product-list {
+  .petitgateau-page .product-list {
     grid-template-columns: 1fr;
     padding: 1rem 0;
   }
 }
-.product-list .product-card {
-  background: #fff;
+.petitgateau-page .product-list .product-card {
+  background: #fdfaf7;
   border-radius: 14px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -56,37 +101,38 @@
   transition: transform 0.3s ease;
 }
 @media screen and (max-width: 767px) {
-  .product-list .product-card {
+  .petitgateau-page .product-list .product-card {
     padding: 0.5rem;
     margin: 0 auto;
     max-width: 400px;
   }
 }
-.product-list .product-card:hover {
+.petitgateau-page .product-list .product-card:hover {
   transform: translateY(-8px);
 }
-.product-list .product-card img {
+.petitgateau-page .product-list .product-card img {
   max-width: 100%;
-  height: 400px;
+  min-height: 400px;
+  aspect-ratio: 4/3;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-.product-list .product-card h2 {
+.petitgateau-page .product-list .product-card h2 {
   font-size: 1.3rem;
-  color: #6b5b7b;
+  color: #4b4453;
   margin-bottom: 0.5rem;
 }
 @media screen and (max-width: 767px) {
-  .product-list .product-card h2 {
+  .petitgateau-page .product-list .product-card h2 {
     font-size: 1.1rem;
   }
 }
-.product-list .product-card .desc {
+.petitgateau-page .product-list .product-card .desc {
   font-size: 1rem;
-  color: #6b5d7b;
+  color: #4b4453;
   margin-bottom: 0.8rem;
 }
-.product-list .product-card .price {
+.petitgateau-page .product-list .product-card .price {
   font-size: 1.2rem;
   color: #d4a574;
   font-weight: bold;
@@ -95,33 +141,33 @@
   right: 1rem;
 }
 @media screen and (max-width: 767px) {
-  .product-list .product-card .price {
+  .petitgateau-page .product-list .product-card .price {
     font-size: 0.8rem;
     bottom: 0.5rem;
   }
 }
-.product-list .badge {
+.petitgateau-page .product-list .badge {
   position: absolute;
   top: 10px;
   left: 10px;
   background: #d4a574;
   color: #fff;
+  font-weight: 100;
   font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
   border-radius: 8px;
   font-weight: bold;
 }
-.product-list.new .badge {
+.petitgateau-page .product-list.new .badge {
   background: #6b5b7b;
 }
-.product-list.popular .badge {
+.petitgateau-page .product-list.popular .badge {
   background: #d4a574;
 }
-
-.other-menus {
+.petitgateau-page .other-menus {
   text-align: center;
 }
-.other-menus .menu-links {
+.petitgateau-page .other-menus .menu-links {
   display: flex;
   justify-content: center;
   gap: 1rem;

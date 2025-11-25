@@ -1,37 +1,84 @@
 .celebration-page {
-  background: #faf8f5;
-  color: #6b5b7b;
+  background: radial-gradient(circle at center, #e9d9c5 0%, #f5ece3 60%, #f8f3ee 100%);
+  color: #4a3f35;
   line-height: 1.6;
+  min-height: 100vh;
+  padding: 100px 0 120px;
 }
-.celebration-page .hero {
-  background: linear-gradient(135deg, #faf8f5, #d4a574);
+.celebration-page .celebration-hero {
+  position: relative;
+  width: min(90%, 1200px);
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #f0e2d4, #e5cfba);
   text-align: center;
-  padding: 4rem 2rem;
+  margin: 0 auto 3rem;
+  padding: 6rem 1rem 4rem;
+  border-radius: 50px;
+  border: 1px solid rgba(200, 180, 150, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 20px 60px rgba(212, 165, 116, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  animation: fadeInUp 1s ease-out both;
 }
-.celebration-page .hero .hero-title {
-  font-size: 3rem;
+.celebration-page .celebration-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.15), transparent 70%);
+  pointer-events: none;
+}
+@media screen and (max-width: 767px) {
+  .celebration-page .celebration-hero {
+    max-width: 90%;
+    padding: 3rem 1rem;
+  }
+}
+.celebration-page .celebration-hero .hero-title {
+  position: relative;
+  text-align: center;
+  color: #4a3f35;
+  letter-spacing: 0.03rem;
+  margin-bottom: 3rem;
+  padding-bottom: 0.8rem;
+  font-size: 3.2rem;
   font-weight: 700;
   font-family: "Playfair Display", serif;
-  margin-bottom: 0.5rem;
-  color: #faf8f5;
-  animation: tracking-in-expand 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+.celebration-page .celebration-hero .hero-title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, #c6b49b, #e8dcc7);
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 @media screen and (max-width: 767px) {
-  .celebration-page .hero .hero-title {
-    font-size: 2.2rem;
+  .celebration-page .celebration-hero .hero-title {
+    margin-bottom: 0.4rem;
+    font-size: 1.8rem;
   }
 }
-.celebration-page .hero .hero-subtitle {
-  font-size: 1.2rem;
-  color: #444;
+.celebration-page .celebration-hero .hero-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.08em;
+  line-height: 2;
+  font-weight: 500;
+  color: #4a3f35;
 }
 @media screen and (max-width: 767px) {
-  .celebration-page .hero .hero-subtitle {
-    font-size: 1rem;
+  .celebration-page .celebration-hero .hero-subtitle {
+    line-height: 1.4;
+    margin-top: 0;
+    font-size: 0.9rem;
   }
 }
-
-.celebration-list {
+.celebration-page .celebration-list {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -41,13 +88,13 @@
   padding: 3rem 2rem;
 }
 @media screen and (max-width: 767px) {
-  .celebration-list {
+  .celebration-page .celebration-list {
     grid-template-columns: 1fr;
     padding: 1rem 0;
   }
 }
-.celebration-list .product-card {
-  background: #fff;
+.celebration-page .celebration-list .product-card {
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 14px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -55,51 +102,53 @@
   transition: transform 0.3s ease;
 }
 @media screen and (max-width: 767px) {
-  .celebration-list .product-card {
+  .celebration-page .celebration-list .product-card {
     padding: 0.5rem;
     margin: 0 auto;
     max-width: 400px;
   }
 }
-.celebration-list .product-card:hover {
+.celebration-page .celebration-list .product-card:hover {
   transform: translateY(-8px);
 }
-.celebration-list .product-card img {
+.celebration-page .celebration-list .product-card img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-.celebration-list .product-card h2 {
+.celebration-page .celebration-list .product-card h2 {
   font-size: 1.3rem;
-  color: #6b5d7b;
   margin-bottom: 0.5rem;
 }
 @media screen and (max-width: 767px) {
-  .celebration-list .product-card h2 {
+  .celebration-page .celebration-list .product-card h2 {
     font-size: 1.1rem;
   }
 }
-.celebration-list .product-card .desc {
+.celebration-page .celebration-list .product-card .desc {
   font-size: 1rem;
-  color: #6b5d7b;
   margin-bottom: 0.8rem;
 }
-.celebration-list .product-card .price {
+.celebration-page .celebration-list .product-card .price {
   font-size: 1.2rem;
   color: #d4a574;
   font-weight: bold;
 }
 @media screen and (max-width: 767px) {
-  .celebration-list .product-card .price {
-    font-size: 1rem;
+  .celebration-page .celebration-list .product-card .price {
+    font-size: 0.8rem;
   }
 }
-.celebration-list .product-card .size {
+.celebration-page .celebration-list .product-card .size {
   font-size: 0.95rem;
-  color: #6b5d7b;
 }
-.celebration-list .product-card .badge {
+@media screen and (max-width: 767px) {
+  .celebration-page .celebration-list .product-card .size {
+    font-size: 0.75rem;
+  }
+}
+.celebration-page .celebration-list .product-card .badge {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -110,17 +159,16 @@
   border-radius: 8px;
   font-weight: bold;
 }
-.celebration-list .product-card.new .badge {
+.celebration-page .celebration-list .product-card.new .badge {
   background: #6b5b7b;
 }
-.celebration-list .product-card.popular .badge {
+.celebration-page .celebration-list .product-card.popular .badge {
   background: #d4a574;
 }
-
-.other-menus {
+.celebration-page .other-menus {
   text-align: center;
 }
-.other-menus .menu-links {
+.celebration-page .other-menus .menu-links {
   display: flex;
   justify-content: center;
   gap: 1rem;

@@ -8,15 +8,10 @@
 
 body {
     font-family: 'Cormorant Garamond', 'Hiragino Sans', 'Yu Gothic', sans-serif;
-    color: #6b5b73;
+    color: #4b4453;
     background: #faf8f5;
     overflow-x: hidden;
     line-height: 1.6;
-
-    @include m.sp {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-    }
 }
 
 img {
@@ -56,6 +51,11 @@ ul {
             0 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
+
+        @include m.sp {
+            padding: 0.7rem 2rem;
+            font-size: 0.9rem;
+        }
 
         // シャイン効果
         &::before {
@@ -149,37 +149,23 @@ h3 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+
+    @include m.sp {
+        padding: 0 10px;
+    }
 }
 
 /* Heroセクション */
 .hero-section {
-    position: relative;
     height: 100vh;
+    position: relative;
     background: linear-gradient(135deg, #fffdf9 0%, #f8f4ee 100%);
-    padding: 8% 0;
+    padding: 8% 0 4% 0;
     text-align: center;
-    overflow: hidden;
+
     @include m.sp {
-        padding: 12% 0 6%;
-    }
-
-    /* 左右のやわらかい光 */
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        width: 45%;
-        height: 60%;
-        border-radius: 50%;
-        filter: blur(60px);
-        opacity: 0.6;
-    }
-
-    &::after {
-        bottom: -15%;
-        right: -10%;
-        background: radial-gradient(circle, rgba(255, 235, 215, 0.4), transparent 70%);
+        height: 80vh;
+        padding: 20% 0 6%;
     }
 }
 
@@ -196,7 +182,7 @@ h3 {
 
     .bg-slide {
         position: absolute;
-        top: 2%;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100%;
@@ -221,6 +207,103 @@ h3 {
 
     .bg-slide:nth-child(3) {
         background-image: url("../img/mainvisual3.jpg");
+    }
+}
+
+/* コンテンツ */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 1200px;
+    height: 85vh;
+    margin: 0 auto;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include m.sp {
+        height: 60vh;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 55%;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 45%;
+    }
+
+    /* テキスト切り替え */
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Shippori Mincho", serif;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: rgba(0, 0, 0, 0.25) 0 2px 6px;
+        opacity: 0;
+        z-index: 1000;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @include m.sp {
+            writing-mode: vertical-rl;
+            top: auto;
+            bottom: 25%;
+            left: 55%;
+            transform: translateX(-30%);
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            margin: 0 0 1.2rem;
+
+            @include m.sp {
+                font-size: 2rem;
+                margin-left: 0.8rem;
+                line-height: 1.4;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+
+            @include m.sp {
+                font-size: 0.8rem;
+                margin-left: 0.9rem;
+            }
+        }
+
+        .hero-en {
+            font-size: 0.8rem;
+            font-style: italic;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.85);
+
+            @include m.sp {
+                font-size: 0.5rem;
+                position: absolute;
+                bottom: 10%;
+                transform: translateX(-40%);
+            }
+        }
     }
 }
 
@@ -288,97 +371,8 @@ h3 {
     }
 }
 
-/* コンテンツ */
-.hero-content {
-    position: relative;
-    z-index: 10;
-    width: 80%;
-    max-width: 1200px;
-    height: 85vh;
-    margin: 0 auto;
-    border-radius: 40px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @include m.sp {
-        align-items: center;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 55%;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 45%;
-    }
-
-    /* テキスト切り替え */
-    .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: "Shippori Mincho", serif;
-        color: #fff;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        z-index: 1000;
-
-        &.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @include m.sp {
-            top: auto;
-            bottom: 10%;
-            left: 30%;
-            transform: translateX(-30%);
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 300;
-            line-height: 1.2;
-            letter-spacing: 0.05em;
-            margin: 0 0 1.2rem;
-
-            @include m.sp {
-                font-size: 2.5rem;
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-
-            @include m.sp {
-                font-size: 0.85rem;
-            }
-        }
-
-        .hero-en {
-            font-size: 0.95rem;
-            font-style: italic;
-            letter-spacing: 0.12em;
-            color: rgba(255, 255, 255, 0.85);
-
-            @include m.sp {
-                font-size: 0.8rem;
-            }
-        }
-    }
-}
-
 @keyframes twinkle {
+
     0%,
     100% {
         opacity: 0.7;
@@ -405,22 +399,22 @@ h3 {
 #header {
     position: sticky;
     top: 0;
-    width: 100%;
-    background-color: rgba(107, 91, 115, 0.95);
-    backdrop-filter: blur(8px);
-    color: #fff;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
     padding: 0 40px;
-    transition: background-color 0.3s ease, height 0.3s ease;
+    background-color: rgba(107, 91, 115, 0.95);
+    backdrop-filter: blur(12px);
+    color: #fff;
     z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 
     @include m.sp {
         height: 70px;
         padding: 0 20px;
-        color: #6b5b73;
     }
 
     &::after {
@@ -429,81 +423,74 @@ h3 {
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: linear-gradient(90deg, #d4a574 0%, #e8c19e 50%, #d4a574 100%);
-
-        @include m.sp {
-            height: 2px;
-        }
     }
 
-    .logo {
-        z-index: 1001;
+    // ボトムに繊細な影のライン
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+    }
 
-        img {
-            height: 60px;
-            width: auto;
+    .logo img {
+        height: 75px;
+        width: auto;
+
+        @include m.sp {
+            height: 65px;
         }
     }
 }
 
 /* ナビゲーション */
 #navi {
-    .nav-menu {
+    ul.nav-menu {
         display: flex;
         gap: 50px;
-        margin: 0;
-        padding: 0;
+        list-style: none;
 
         @include m.sp {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            background: #faf8f5;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            transition: right 0.3s ease;
-            z-index: 15;
+            display: none;
         }
 
-        li {
-            a {
-                font-size: 16px;
+        li a {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            position: relative;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: color 0.3s ease;
+
+            @include m.sp {
+                display: block;
+                width: 220px;
+                padding: 15px 0;
+                text-align: center;
+                background: #fff;
+                border-radius: 50px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                font-size: 1.2rem;
+                color: #6b5b7b;
+                font-weight: 500;
                 letter-spacing: 0.05em;
-                position: relative;
-                padding: 10px 15px;
-                border-radius: 4px;
-                transition: color 0.3s ease;
+                transition: 0.35s ease;
+            }
+
+            &:hover {
+                color: #d4a574;
+                background: rgba(212, 165, 116, 0.1);
 
                 @include m.sp {
-                    font-size: 20px;
-                    font-weight: 400;
-                    padding: 12px 20px;
-                }
-
-                &:hover {
-                    color: #d4a574;
-                }
-
-                // アンダーライン効果
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 5px;
-                    left: 50%;
-                    width: 0;
-                    height: 1px;
-                    background: #d4a574;
-                    transform: translateX(-50%);
-                    transition: width 0.3s ease;
-                }
-
-                &:hover::after {
-                    width: 80%;
+                    background: linear-gradient(135deg, #d4a574, #c99761);
+                    color: #fff;
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.35);
                 }
             }
         }
@@ -512,88 +499,111 @@ h3 {
 
 .toggle_btn {
     display: none;
-    width: 40px;
-    height: 40px;
-    transition: all 0.5s;
-    cursor: pointer;
-    z-index: 20;
     position: relative;
-    justify-content: center;
-    align-items: center;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1100;
 
     @include m.sp {
-        display: flex;
+        display: block;
     }
 
     span {
-        display: block;
         position: absolute;
-        right: 0;
+        left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         background: #d4a574;
-        border-radius: 4px;
-        transition: all 0.5s ease;
+        border-radius: 3px;
+        transition: transform 0.45s cubic-bezier(.55, .06, .68, .19),
+            opacity 0.45s ease,
+            top 0.45s ease,
+            bottom 0.45s ease;
 
         &:nth-child(1) {
-            top: 22%;
+            top: 0;
         }
 
         &:nth-child(2) {
             top: 50%;
+            transform: translateY(-50%);
         }
 
         &:nth-child(3) {
-            top: 78%;
+            bottom: 0;
         }
     }
 }
 
-.open {
-    #navi .nav-menu {
-        @include m.sp {
-            right: 0;
+#navi .nav-menu {
+    @include m.sp {
+        display: flex !important;
+        flex-direction: column;
+        gap: 40px;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        background: #faf8f5;
+        transition: 0.4s;
+        z-index: 100;
+
+        li a {
+            border-radius: 30px;
+            background: #d4a574;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 15px 25px;
         }
     }
+}
 
-    .toggle_btn {
-        span {
-            &:nth-child(1) {
-                top: 50%;
-                transform: rotate(-315deg);
-            }
+body.open #navi .nav-menu {
+    right: 0;
+}
 
-            &:nth-child(2) {
-                opacity: 0;
-            }
+#mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 1000;
 
-            &:nth-child(3) {
-                top: 50%;
-                transform: rotate(315deg);
-            }
-        }
-    }
-
-    #mask {
+    @include m.sp {
         display: block;
     }
 }
 
-#mask {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    z-index: 10;
-    cursor: pointer;
+body.open #mask {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.open .toggle_btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+body.open .toggle_btn span:nth-child(2) {
+    opacity: 0;
+}
+
+body.open .toggle_btn span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
 }
 
 /* メニューセクション */
 #menu {
     width: 100%;
+    margin: 0 auto;
     padding-top: 80px;
     animation: gradientMove 25s ease infinite;
     background: linear-gradient(120deg,
@@ -607,16 +617,15 @@ h3 {
 
     .menu-content {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
         position: relative;
         padding: 6rem 2rem;
         background-size: 400% 400%;
 
         @include m.sp {
-            grid-template-columns: 1fr;
-            gap: 24px;
-            padding: 3rem 1.5rem;
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
         }
 
         .menu-card {
@@ -632,10 +641,14 @@ h3 {
                 max-width: 100%;
                 height: 320px;
                 display: block;
-                object-fit: cover;
                 border-radius: 12px;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
                 transition: box-shadow 0.4s ease;
+
+                @include m.sp {
+                    min-height: 300px;
+                    aspect-ratio: 4/3;
+                }
             }
 
             &:hover {
@@ -916,6 +929,11 @@ h3 {
 .instagram-section {
     margin-bottom: 5rem;
     padding-top: 80px;
+    margin-bottom: 120px;
+
+    @include m.sp {
+        padding-top: 40px;
+    }
 
     .instagram-grid {
         display: grid;
@@ -946,6 +964,11 @@ h3 {
     .instagram-follow {
         text-align: center;
         margin-top: 40px;
+
+        @include m.sp {
+            margin-top: 30px;
+
+        }
     }
 
     .follow-button {
@@ -960,11 +983,16 @@ h3 {
         font-size: 1.1rem;
         transition: all 0.3s ease;
         box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
-    }
 
-    .follow-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(212, 165, 116, 0.4);
+        @include m.sp {
+            padding: 12px 30px;
+            font-size: 0.8rem;
+        }
+
+        .follow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.4);
+        }
     }
 }
 
@@ -972,8 +1000,7 @@ h3 {
 footer {
     background: #6b5b73;
     color: #fff;
-    margin-top: 3rem;
-    padding: 60px 0 30px;
+    padding: 60px 20px 30px;
     position: relative;
 
     @include m.sp {
